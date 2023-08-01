@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->binary('photo')->unique();
             $table->string('contact_info')->unique();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('author');
     }
 };

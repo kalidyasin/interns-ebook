@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('book_id');
             $table->string('user_id')->unique();
             $table->date('date')->unique();
-            $table->rememberToken();
             $table->timestamps();
         });
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('book_history');
     }
 };

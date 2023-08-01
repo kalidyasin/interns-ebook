@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('book_id');
             $table->string('category_id')->unique();
-            $table->rememberToken();
             $table->timestamps();
         });
     }

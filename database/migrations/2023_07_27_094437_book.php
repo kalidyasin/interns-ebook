@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('author_id')->nullable();
             $table->string('user_id');
             $table->string('language_id');
-            $table->rememberToken();
+            $table->string("path");
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('book');
     }
 };
