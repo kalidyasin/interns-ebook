@@ -16,11 +16,6 @@
                 
                 @section('sidebar')
                 @include('left-sidebar')
-                @endsection
-                <div class="card">
-                    <div class="card-header">
-                    </div>
-                    <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -31,10 +26,18 @@
                                 {{ session('error') }}
                             </div>
                         @endif
+
+                        <div class="container">
+                            <h1>List of Books</h1>
+                            <ul>
+                                @foreach ($books as $book)
+                                    <li>{{ $book->title }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @include('footer')
+                        @endsection
     
-                        <h1>Admin Page</h1>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

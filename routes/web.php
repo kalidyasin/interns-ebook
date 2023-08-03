@@ -32,4 +32,14 @@ Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'admin'])
 Route::get('/users/{id}', 'App\Http\Controllers\HomeController@show')->name('users.show_user');
 
 Route::get('/books/addBook', [App\Http\Controllers\HomeController::class, 'addBook'])->name('addBook');
-Route::post('/books', [App\Http\Controllers\HomeController::class, 'addBook'])->name('books.bookstore');
+Route::post('/books/addBook', [App\Http\Controllers\HomeController::class, 'bookstore'])->name('bookstore');
+
+Route::get('/author/authors', [App\Http\Controllers\HomeController::class, 'author'])->name('author');
+Route::post('/author/authors', [App\Http\Controllers\HomeController::class, 'addAuthor'])->name('addAuthor');
+
+Route::get('/languages/language', [App\Http\Controllers\HomeController::class, 'language'])->name('language');
+Route::post('/languages/language', [App\Http\Controllers\HomeController::class, 'addlanguage'])->name('addlanguage');
+
+Route::get('/categorys/category', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
+Route::post('/categorys/category', [App\Http\Controllers\HomeController::class, 'addcategory'])->name('addcategory');
+

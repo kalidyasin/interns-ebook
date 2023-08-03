@@ -5,40 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <title>Add Book</title>
+    <title> Add Language</title>
 </head>
-<body class="addbook">
+<body>
     @extends('layouts.app')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            Add Book
+            Add Language
         </div>
         <div class="card-body">
-            <form action="{{ route('bookstore') }}" method="POST">
+            <form action="{{ route('addlanguage') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" required>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="language" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="year">Year</label>
-                    <input type="text" name="year" id="author" class="form-control" required>
+                    <label for="year">Dercription</label>
+                    <input type="text" name="description" id="language" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="text" name="price" id="author" class="form-control" required>
+                    <label for="remark">Remark</label>
+                    <input type="text" name="remark" id="language" class="form-control" required>
                 </div>
-                
-                <div class="form-group">
-                    <label for="path">Path</label>
-                    <input type="text" name="path" id="author" class="form-control" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Add Book</button>
+                <button type="submit" class="btn btn-primary">Add Language</button>
             </form>
         </div>
     </div>

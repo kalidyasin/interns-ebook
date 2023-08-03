@@ -1,25 +1,18 @@
 <!-- File: resources/views/left-sidebar.blade.php -->
 
-<div class="sidebar">
+<div class="sidebar" style="background-color: #00ff00; width: 200px;">
     <ul>
-       
         <li><a href="#">Products</a></li>
         <li><a href="{{ route('addBook') }}">Add Book</a></li>
+        <li><a href="{{ route('author') }}">Add Authors </a></li>
+        <li><a href="{{ route('language') }}">Add Language </a></li>
+        <li><a href="{{ route('category') }}">Add Category </a></li>
+        <li><a href="{{ route('category') }}">Book Category </a></li>
         <li><a href="#">Users</a></li>
     </ul>
+</div>
 
-    @if(Auth::check())
-        <div class="card mt-3">
-            <div class="card-header">
-             Profile
-            </div>
-            <div class="card-body">
-                <p>Name: {{ Auth::user()->name }}</p>
-                <p>Email: {{ Auth::user()->email }}</p>
-                <p>Joined: {{ Auth::user()->created_at->diffForHumans() }}</p>
-            </div>
-        </div>
-    @endif
+   
 </div>
 <style>
 .sidebar {
