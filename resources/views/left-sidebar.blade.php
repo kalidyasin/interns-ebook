@@ -1,8 +1,8 @@
 <!-- File: resources/views/left-sidebar.blade.php -->
 
-<div class="sidebar" style="background-color: #00ff00; width: 200px;">
+<div class="sidebar" style="background-color: #ecbdd8; width: 200px; ">
     <ul>
-        <li><a href="#">Products</a></li>
+        <li><a href="#">Works of Admin</a></li>
         <li><a href="{{ route('addBook') }}">Add Book</a></li>
         <li><a href="{{ route('author') }}">Add Authors </a></li>
         <li><a href="{{ route('language') }}">Add Language </a></li>

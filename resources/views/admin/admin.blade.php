@@ -15,6 +15,8 @@
             <div class="col-md-8">
                 
                 @section('sidebar')
+                
+              
                 @include('left-sidebar')
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -26,17 +28,14 @@
                                 {{ session('error') }}
                             </div>
                         @endif
-
-                        <div class="container">
-                            <h1>List of Books</h1>
-                            <ul>
-                                @foreach ($books as $book)
-                                    <li>{{ $book->title }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @include('footer')
-                        @endsection
+                        @include('works_admin')
+   
+                        
+                        <section>
+                            @include('footer')
+                        </section>
+            
+                @endsection
     
             </div>
         </div>
