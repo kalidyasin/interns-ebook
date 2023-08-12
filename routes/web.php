@@ -43,7 +43,12 @@ Route::get("edit/{id}", "App\Http\Controllers\Books@toeditpage")->name("editpage
 Route::get("deletebook/{id}", "App\Http\Controllers\Books@delete" );
 Route::get("updatebook/{id}", "App\Http\Controllers\Books@inputsforaddbook" );
 Route::put("bookUpdate/{id}", "App\Http\Controllers\Books@update");
-
+Route::get("/books/addBook", [App\Http\Controllers\Books:: class, "inputsforaddbook"]);
+Route::get("/books/lists", [App\Http\Controllers\HomeController::class, 'tolistbook']);
+Route::get('/books/{book}',  [App\Http\Controllers\Books::class, "update"]);
+Route::get('/books/{book}/edit',  [App\Http\Controllers\Books::class, 'edit'])->name('edit');
+Route::get('/books/{id}/edit', [App\Http\Controllers\Books::class, "edit"]);
+Route::put("/bookUpdate/{id}", [App\Http\Controllers\HomeController::class, "updateBook"]);
 
 Route::get('/author/authors', [App\Http\Controllers\Authors::class, 'author'])->name('author');
 Route::post('/author/authors', [App\Http\Controllers\Authors::class, 'addAuthor'])->name('addAuthor');
@@ -76,19 +81,7 @@ Route::get("deletecategory/{id}", "App\Http\Controllers\Categories@delete" );
 
 
 
-Route::put('/bookUpdate/{id}', [App\Http\Controllers\HomeController::class, 'toUpdate'])->name('book.update');
-Route::get("/books/addBook", [App\Http\Controllers\Books:: class, "inputsforaddbook"]);
-Route::get("/books/lists", [App\Http\Controllers\HomeController::class, 'tolistbook']);
-// Update an existing book
-Route::get('/books/{book}',  [App\Http\Controllers\Books::class, "update"]);
-
-
-
-Route::get('/books/{book}/edit',  [App\Http\Controllers\Books::class, 'edit'])->name('edit');
-
-Route::get('/books/{id}/edit', [App\Http\Controllers\Books::class, "edit"]);
-
-
+;
 Route::get('/', [WelcomeController::class, 'home']);
 Route::get('/about', [WelcomeController::class, 'about']);
 Route::get('/contact', [WelcomeController::class, 'contact']);

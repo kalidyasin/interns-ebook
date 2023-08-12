@@ -41,13 +41,29 @@
                 </div>
                 <div class="form-group">
                     <label for="user_id">User</label>
-                    <select name="" id="" class="form-control" required>
-                    @foreach($users->all() as $user)
+                    <select name="user_id" id="user_id" class="form-control" required>
+                    @foreach($usersupdates as $user)
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                     @endforeach
                     </select>
                
             </div>
+                <div class="form-group">
+                    <label for="author_id">Author</label>
+                    <select name="author_id" id="author_id" class="form-control" required>
+                    @foreach($authorupdates as $author)
+                        <option value="{{ $author->id }}">{{ $author->name }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="language_id">Language</label>
+                    <select name="language_id" id="language_id" class="form-control" required>
+                    @foreach($languageupdate as $language)
+                        <option value="{{ $language->id }}">{{ $language->name }}</option>
+                    @endforeach
+                    </select>
+                </div>
             
                 
             

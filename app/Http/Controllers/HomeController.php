@@ -77,10 +77,12 @@ class HomeController extends Controller
         return view('books.addBook', compact('users', 'authors', 'languages', ));
 
     }
-    public function toUpdate($id){
-        $book = Book::findOrFail($id);
-        $users = User::all();
-        return view('books.edit', ["users"=>$users]);
-    }
+    public function toUpdate()
+        {
+            $usersupdates = User::all();
+            $authorupdates = Author::all();
+            $languageupdate = Language::all();
+            return view('books.edit', ["users"=>$usersupdates, "authorupdates"=>$authorupdates, "languageupdate"=>$languageupdate]);
+        }
 
 }
