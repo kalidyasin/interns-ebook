@@ -3,11 +3,10 @@
 <div class="sidebar" style="background-color: #ecbdd8; width: 200px; ">
     <ul>
         <li><a href="#">Works of Admin</a></li>
-        <li><a href="{{ route('addBook') }}">Add Book</a></li>
+        <li><a href="{{ route('bookPage')}}">Add Books </a></li>
         <li><a href="{{ route('author') }}">Add Authors </a></li>
         <li><a href="{{ route('language') }}">Add Language </a></li>
         <li><a href="{{ route('category') }}">Add Category </a></li>
-        <li><a href="{{ route('category') }}">Book Category </a></li>
         <li><a href="#">Users</a></li>
     </ul>
 </div>

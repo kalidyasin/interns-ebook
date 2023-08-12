@@ -16,28 +16,57 @@
             Add Book
         </div>
         <div class="card-body">
-            <form action="{{ route('bookstore') }}" method="POST">
+            <form action="{{ route('bookstore') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
+            
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" class="form-control" required>
                 </div>
-
+            
                 <div class="form-group">
                     <label for="year">Year</label>
-                    <input type="text" name="year" id="author" class="form-control" required>
+                    <input type="text" name="year" id="year" class="form-control" required>
                 </div>
+            
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" name="price" id="author" class="form-control" required>
+                    <input type="text" name="price" id="price" class="form-control" required>
                 </div>
-                
+            
                 <div class="form-group">
                     <label for="path">Path</label>
-                    <input type="text" name="path" id="author" class="form-control" required>
+                    <input type="file" name="path" id="path" class="form-control" required>
                 </div>
-
+            
+                <div class="form-group">
+                        <label for="user_id">User</label>
+                        <select name="user_id" id="user_id" class="form-control" required>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                        </select>
+                   
+                </div>
+            
+                <div class="form-group">
+                    <label for="author_id">Author</label>
+                    <select name="author_id" id="author_id" class="form-control" required>
+                    @foreach($authors as $author)
+                        <option value="{{ $author->id }}">{{ $author->name }}</option>
+                    @endforeach
+                    </select>
+                </div>
+            
+                <div class="form-group">
+                    <label for="language_id">Language</label>
+                    <select name="language_id" id="language_id" class="form-control" required>
+                    @foreach($languages as $language)
+                        <option value="{{ $language->id }}">{{ $language->name }}</option>
+                    @endforeach
+                    </select>
+                </div>
+            
                 <button type="submit" class="btn btn-primary">Add Book</button>
             </form>
         </div>
