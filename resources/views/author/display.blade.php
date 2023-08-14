@@ -19,6 +19,9 @@
                     <th>Name</th>
                     <th>Photo</th>
                     <th>Contact Information</th>
+
+                    <th>Action</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -27,13 +30,13 @@
                     <td>{{ $author->name }}</td>
                     <td>{{ $author->photo }}</td>
                     <td>{{ $author->contact_info }}</td>
-                
-                <td>
-                    <a href="" class="btn btn-success" style="background-color: rgb(39, 43, 32); color:white">Edit</a>
-                    <a href="{{url("deleteauthor/".$author->id )}}" class="btn btn-danger" style="background-color: rgb(255, 7, 7); color:white">Delete</a>
 
-                </td>
-            </tr>
+                    <th>
+                        <a style="background-color: hsl(0, 0%, 0%)" href=" {{route('authors.edit', $author->id)}}" class="btn btn-success">Edit</a>
+                        <a style="background-color: red" href=" {{url("deleteauthor/".$author->id )}}" class="btn btn-danger">Delete</a>
+                    </th>
+                </tr>
+
                 @endforeach
             </tbody>
         </table>

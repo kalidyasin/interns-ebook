@@ -26,7 +26,8 @@
                             <th>Author</th>
                             <th>Language</th>
                             <th>Path</th>
-                            <th>Action</th>
+
+                            <th>Actions</th>
 
                         </tr>
                     </thead>
@@ -40,11 +41,12 @@
                             <td>{{ $book->author_id }}</td>
                             <td>{{ $book->language_id }}</td>
                             <td>{{ $book->path }}</td>
-                            <td>
-                                <a href="" class="btn btn-success" style="background-color: rgb(39, 43, 32); color:white">Edit</a>
-                                <a href="{{url("deletebook/".$book->id )}}" class="btn btn-danger" style="background-color: rgb(255, 7, 7); color:white">Delete</a>
-            
-                            </td>
+
+                            <th>
+                                <a style="background-color: black" class="btn btn-success" href="{{ url('edit', $book->id) }} ">Edit</a>
+                                <a style="background-color: red" class="btn btn-danger" href="{{url("deletebook", $book->id)}}">Delete</a>
+                            </th>
+                    
 
                         </tr>
                         @endforeach

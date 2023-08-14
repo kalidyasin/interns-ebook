@@ -33,11 +33,29 @@ class Authors extends Controller
     public function displayauthor()
     {
         return view('author.display');
-    }  
-    public function destroyauthor(Author $author, $id)
-        {
-            $author = Author::find($id);
-            $author->delete();
-            return view("display")->with('status', 'Author deleted successfully.');
-        } 
+    }
+    public function update(Request $request, Author $author)
+{
+
+        $author->name = $request->input('name');
+        $author->contact_info = $request->input('cont');
+
+
+        $author->save();
+
+        return redirect()->route('displayauthor');
+
+    //return redirect()->route('authors.index');
 }
+    public function edit(Author $author)
+{
+    return view('author.edit', compact('author'));
+}
+public function destroyauthor(Author $author, $id)
+{
+    $author = Author::find($id);
+    $author->delete();
+    return redirect()->route('displayauthor');
+} 
+  }
+

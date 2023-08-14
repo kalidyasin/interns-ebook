@@ -49,18 +49,34 @@ class Books extends Controller
             return view('books.addBook', compact('users', 'authors', 'languages', ));
     
         }
-        public function destroybook(Book $book, $id)
-        {
-            $books = Book::find($id);
-            $books->delete();
-            return view("books.lists")->with('status', 'Book deleted successfully.');
-        } 
 
-        
-
-       
         public function listforbook(){
             return view("books.lists");
         }
+        public function update(Request $request, $id)
+        {
+            $book = Book::find($id);
+            $book->title = $request->input('title');
+            $book->year = $request->input('year');
+            $book->price = $request->input('price');
+            $book->user_id = $request->input("user_id");
+            $book->updated_at = now();
+           $book->save();
+            
+            return redirect()->route('listforbook')->with('success', 'Book updated successfully');
+        }
+        public function toeditpage($id)
+            {
+                $book = Book::find($id);
+                return view('books.edit', compact('book'));
+            }
+
+            public function delete($id){
+                $book = Book::find($id);
+                $book->delete();
+                return redirect()->route("listforbook")->with("status", "Deleted successfully");
+            }
+            
+
 
 }

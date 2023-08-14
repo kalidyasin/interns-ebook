@@ -31,12 +31,31 @@ class Categories extends Controller
     {
         return view('categorys.list');
     } 
-    public function destroycategory(Category $category, $id)
-        {
-            $category = Category::find($id);
-            $category->delete();
+
+    public function update(Request $request, Category $category)
+    {
+       
         
-            return redirect("/categorys/list")->with('status', 'Category deleted successfully.');
-        } 
+    
+            $category->name = $request->input('name');
+            $category->description = $request->input('description');
+            $category->editor = $request->input('editor');
+
+            $category->save();
+    
+            return redirect()->route('listscategory');
+    
+        //return redirect()->route('categorys.index');
+    }
+        public function edit(Category $category)
+    {
+        return view('categorys.edit', compact('category'));
+    }
+    public function delete($id){
+        $language = Category::find($id);
+        $language->delete();
+        return redirect()->route("listlanguage")->with("status", "Deleted successfully");
+    }
+
 
 }
