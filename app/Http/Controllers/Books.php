@@ -52,22 +52,29 @@ class Books extends Controller
         public function listforbook(){
             return view("books.lists");
         }
-        public function update(Request $request, $id)
+        public function update(Request $request, Book $book)
         {
-            $book = Book::find($id);
-            $book->title = $request->input('title');
-            $book->year = $request->input('year');
-            $book->price = $request->input('price');
-            $book->user_id = $request->input("user_id");
-            $book->updated_at = now();
-           $book->save();
-            
-            return redirect()->route('listforbook')->with('success', 'Book updated successfully');
+            $request->validate([
+                'title' => 'required|string',
+                'year' => 'required|unique:books,year,' . $book->id,
+                'price' => 'required|unique:books,price,' . $book->id,
+                'path' => 'required|string',
+                'author_id' => 'nullable|exists:authors,id',
+                'user_id' => 'required|exists:users,id',
+                'language_id' => 'required|exists:languages,id',
+            ]);
+    
+            $book->update($request->all());
+    
+            return redirect()->route("listforbook")->with('success', 'Book updated successfully.');
         }
-        public function toeditpage($id)
+        public function edit(Book $book)
             {
-                $book = Book::find($id);
-                return view('books.edit', compact('book'));
+                $authors = Author::all();
+                $users = User::all();
+                $languages = Language::all();
+
+                return view('books.edit', compact('book', 'authors', 'users', 'languages'));
             }
 
             public function delete($id){

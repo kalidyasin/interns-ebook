@@ -39,16 +39,12 @@ Route::get('/users/{id}', 'App\Http\Controllers\HomeController@show')->name('use
 Route::post('/books/addBook', [App\Http\Controllers\Books::class, 'bookstore'])->name('bookstore');
 Route::put("/books/addBook", [App\Http\Controllers\HomeController::class, "bookPage"])->name("bookPage");
 Route::put("/books/lists", [App\Http\Controllers\Books::class, "listforbook"])->name("listforbook");
-Route::get("edit/{id}", "App\Http\Controllers\Books@toeditpage")->name("editpage");
 Route::get("deletebook/{id}", "App\Http\Controllers\Books@delete" );
-Route::get("updatebook/{id}", "App\Http\Controllers\Books@inputsforaddbook" );
-Route::put("bookUpdate/{id}", "App\Http\Controllers\Books@update");
 Route::get("/books/addBook", [App\Http\Controllers\Books:: class, "inputsforaddbook"]);
 Route::get("/books/lists", [App\Http\Controllers\HomeController::class, 'tolistbook']);
-Route::get('/books/{book}',  [App\Http\Controllers\Books::class, "update"]);
-Route::get('/books/{book}/edit',  [App\Http\Controllers\Books::class, 'edit'])->name('edit');
-Route::get('/books/{id}/edit', [App\Http\Controllers\Books::class, "edit"]);
-Route::put("/bookUpdate/{id}", [App\Http\Controllers\HomeController::class, "updateBook"]);
+Route::resource('books', Books::class);
+Route::get('/books/{book}/edit', [Books::class, 'edit'])->name('books.edit');
+Route::put('/books/{book}', [Books::class, 'update'])->name('books.update');
 
 Route::get('/author/authors', [App\Http\Controllers\Authors::class, 'author'])->name('author');
 Route::post('/author/authors', [App\Http\Controllers\Authors::class, 'addAuthor'])->name('addAuthor');

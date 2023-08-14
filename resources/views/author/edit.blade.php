@@ -18,6 +18,9 @@
     <label for="name">Name:</label><br>
     <input type="text" name="name" value="{{ $author->name }}"><br>
 
+    <label for="photo">Photo:</label><br>
+    <input type="file" name="photo" value="{{ $author->photo }}"><br>
+
     <label for="cont">contact_information:</label><br>
     <input type="text" name="cont" value="{{ $author->contact_info }}"><br>
 
