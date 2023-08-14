@@ -31,6 +31,7 @@ class Categories extends Controller
     {
         return view('categorys.list');
     } 
+
     public function update(Request $request, Category $category)
     {
        
@@ -55,5 +56,6 @@ class Categories extends Controller
         $language->delete();
         return redirect()->route("listlanguage")->with("status", "Deleted successfully");
     }
+
 
 }

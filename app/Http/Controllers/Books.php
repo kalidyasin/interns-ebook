@@ -49,6 +49,7 @@ class Books extends Controller
             return view('books.addBook', compact('users', 'authors', 'languages', ));
     
         }
+
         public function listforbook(){
             return view("books.lists");
         }
@@ -76,5 +77,6 @@ class Books extends Controller
                 return redirect()->route("listforbook")->with("status", "Deleted successfully");
             }
             
+
 
 }
