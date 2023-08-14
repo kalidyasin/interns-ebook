@@ -54,6 +54,7 @@ class HomeController extends Controller
         $authors = Author::all();
         return view('author.display', compact('authors' ));
 
+
     }
     public function tolistlanguage(){
         $languages = Language::all();
@@ -84,5 +85,6 @@ class HomeController extends Controller
             $languageupdate = Language::all();
             return view('books.edit', ["users"=>$usersupdates, "authorupdates"=>$authorupdates, "languageupdate"=>$languageupdate]);
         }
+
 
 }
