@@ -43,7 +43,7 @@
                             <td>{{ $book->path }}</td>
 
                             <th>
-                                <a style="background-color: black" class="btn btn-success" href="{{ url('edit', $book->id) }} ">Edit</a>
+                                <a style="background-color: black" class="btn btn-success" href="{{ route('books.edit', $book->id) }} ">Edit</a>
                                 <a style="background-color: red" class="btn btn-danger" href="{{url("deletebook", $book->id)}}">Delete</a>
                             </th>
                     
