@@ -18,7 +18,7 @@
 <body>
     <div id="app">       
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container" style="background-color:rgb(173, 227, 252);">
+            <div class="container" style="background-color:rgb(255, 11, 170);">
                 <a class="navbar-brand" href="{{ url('/') }}">
                   <h1 style="color: white">E-book</h1>
                 </a>

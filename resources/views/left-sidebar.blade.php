@@ -1,12 +1,13 @@
 <!-- File: resources/views/left-sidebar.blade.php -->
 
-<div class="sidebar" style="background-color: blue; width: 200px; ">
+<div class="sidebar" style="background-color: #ecbdd8; width: 200px; ">
     <ul>
-        <li><h1>Works of Admin</h1></li>
+        <li><a href="#">Works of Admin</a></li>
         <li><a href="{{ route('bookPage')}}">Add Books </a></li>
         <li><a href="{{ route('author') }}">Add Authors </a></li>
         <li><a href="{{ route('language') }}">Add Language </a></li>
         <li><a href="{{ route('category') }}">Add Category </a></li>
+        <li><a href="#">Users</a></li>
     </ul>
 </div>
 
@@ -34,11 +35,10 @@
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: #ffffff;
+    color: #333;
 }
 
 .sidebar ul li a:hover {
-    background-color: #000000;
+    background-color: #ddd;
 }
-
 </style>

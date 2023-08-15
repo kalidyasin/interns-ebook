@@ -38,7 +38,6 @@ class Authors extends Controller
 {
 
         $author->name = $request->input('name');
-        $author->photo = $request->input('photo');
         $author->contact_info = $request->input('cont');
 
 
