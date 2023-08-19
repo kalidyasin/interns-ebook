@@ -31,6 +31,7 @@ class Categories extends Controller
     {
         return view('categorys.list');
     } 
+
     public function update(Request $request, Category $category)
     {
             $category->name = $request->input('name');
@@ -53,6 +54,7 @@ class Categories extends Controller
     }
 
 
+
     public function sidebaruser()
         {
               $categories = Category::all();
@@ -61,5 +63,4 @@ class Categories extends Controller
             }
     
    
-
 }
