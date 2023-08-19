@@ -23,4 +23,10 @@ class Book extends Model
     {
         return $this->belongsTo(Language::class);
     }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class); 
+    }
+
+    
 }

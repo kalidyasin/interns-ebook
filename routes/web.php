@@ -83,8 +83,17 @@ Route::get("deletecategory/{id}", "App\Http\Controllers\Categories@delete" );
 
 
 
-;
+Route::get('/user/home', 'Books@search');
+Route::get('/user/home', [App\Http\Controllers\HomeController::class, "sidebar"]);
+
 Route::get('/', [WelcomeController::class, 'home']);
 Route::get('/about', [WelcomeController::class, 'about']);
 Route::get('/contact', [WelcomeController::class, 'contact']);
+
+
+Route::get('/user/sidebar', [App\Http\Controllers\Categories::class, 'sidebaruser'])->name('categories.sidebar');
+
+Route::get('category/{category}', 'App\Http\Controllers\HomeController@showBooks')->name('user.category.books');
+
+Route::get('user/{book}/book', 'App\Http\Controllers\HomeController@readBook')->name('books.read');
 

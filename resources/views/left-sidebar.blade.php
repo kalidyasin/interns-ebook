@@ -31,7 +31,7 @@
 }
 
 .sidebar ul li a {
-    display: block;
+    display: flex;
     padding: 10px;
     text-decoration: none;
     color: #ffffff;

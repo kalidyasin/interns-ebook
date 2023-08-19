@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('author_id')->nullable();
             $table->string('user_id');
             $table->string('language_id');
+            $table->string('categories');
+
             $table->timestamps();
         });
     }

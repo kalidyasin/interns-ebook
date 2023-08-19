@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Book;
 use App\Models\Author;
+use App\Models\Book_history;
 use App\Models\language;
 use App\Models\Category;
 
@@ -74,17 +75,40 @@ class HomeController extends Controller
         $users = User::all();
         $authors = Author::all();
         $languages = Language::all();
+        $categories = Category::all();
 
         return view('books.addBook', compact('users', 'authors', 'languages', ));
 
     }
     public function toUpdate()
         {
+            $categories = Category::all();
+
             $usersupdates = User::all();
             $authorupdates = Author::all();
             $languageupdate = Language::all();
             return view('books.edit', ["users"=>$usersupdates, "authorupdates"=>$authorupdates, "languageupdate"=>$languageupdate]);
         }
 
+        
+        
+        public function showBooks(Category $category)
+            {
+                $books = $category->books;
+                $books = $category->books()->with('author')->get();
+                return view('user.home', compact('category', 'books'));
+
+            }
+            public function readBook(Book $book)
+                {
+                    $user = auth()->user();
+
+                    Book_history::create([
+                        'user_id' => $user->id,
+                        'book_id' => $book->id,
+                    ]);
+                    return view('user.book', compact('book'));
+                }
+                
 
 }
