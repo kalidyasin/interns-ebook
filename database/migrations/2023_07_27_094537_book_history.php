@@ -9,18 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('book_histories', function (Blueprint $table) {
+        Schema::create('book_history', function (Blueprint $table) {
             $table->id();
-            $table->string('book_id');
-            $table->string('user_id')->unique();
-            $table->date('date')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('book_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
         });
-
     }
-
+   
     /**
      * Reverse the migrations.
      */

@@ -33,9 +33,6 @@ class Categories extends Controller
     } 
     public function update(Request $request, Category $category)
     {
-       
-        
-    
             $category->name = $request->input('name');
             $category->description = $request->input('description');
             $category->editor = $request->input('editor');
@@ -44,7 +41,6 @@ class Categories extends Controller
     
             return redirect()->route('listscategory');
     
-        //return redirect()->route('categorys.index');
     }
         public function edit(Category $category)
     {
@@ -55,5 +51,15 @@ class Categories extends Controller
         $language->delete();
         return redirect()->route("listlanguage")->with("status", "Deleted successfully");
     }
+
+
+    public function sidebaruser()
+        {
+              $categories = Category::all();
+            
+              return view('user.sidebar', compact('categories'));
+            }
+    
+   
 
 }

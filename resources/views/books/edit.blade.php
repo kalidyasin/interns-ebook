@@ -54,17 +54,11 @@
                         </select>
                     </div>
                 
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label">User:</label>
-                        <select id="user_id" name="user_id" class="form-select">
-                            <option value="">Select User</option>
-                            @foreach($users as $user)
-                                <option value="{{ $user->id }}" {{ $user->id == $book->user_id ? 'selected' : '' }}>
-                                    {{ $user->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <div class="form-group">
+                    <label for="price">User</label>
+                    <input type="text" name="user_id" id="user_id" class="form-control" value="{{ Auth::user()->name }}" required>
+                </div>
+                <br>
                 
                     <div class="mb-3">
                         <label for="language_id" class="form-label">Language:</label>
@@ -77,6 +71,20 @@
                             @endforeach
                         </select>
                     </div>
+                    <label for="categories">Categorries</label>
+                <div class="form-group">
+                    @php
+                $categories = App\Models\Category::all();
+                @endphp
+                <select name="categories[]" multiple>
+                    @foreach($categories as $category)
+                       <option value="{{ $category->id }}">
+                          {{ $category->name }} 
+                       </option>
+                    @endforeach
+                 </select>
+                </div>
+
                 
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>

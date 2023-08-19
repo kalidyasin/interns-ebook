@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book_history extends Model
 {
-    protected $fillable = ['book_id', 'user_id', 'date'];
+    protected $fillable = ['book_id', 'user_id', ];
+
+    
 }
