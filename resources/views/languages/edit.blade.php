@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Update the langauge list</title>
 </head>
 <body>
@@ -10,7 +11,6 @@
 
     @section('content')
     <div class="container">
-    <!-- edit.blade.php -->
 <form action="{{ route('languages.update', $language->id) }}" method="POST">
     @csrf
 
@@ -30,6 +30,7 @@
     <button type="submit">Save</button>
 </form>
 </div>
+
 @endsection
 </body>
 </html>

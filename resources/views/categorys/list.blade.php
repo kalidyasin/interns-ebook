@@ -9,7 +9,6 @@
 </head>
 <body>
     @extends('layouts.app')
-    
     @section('content')
     <div class="container">
         <table class="table">
@@ -19,7 +18,9 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Editor</th>
+
                     <th>Actions</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -28,10 +29,12 @@
                         <td>{{ $category->name }}</td>
                         <td>{{ $category->description }}</td>
                         <td>{{ $category->editor }}</td>
+
                         <th>
                             <a style="background-color: black" class="btn btn-success" href=" {{ route('categories.edit', $category->id) }}">Edit</a>
                             <a style="background-color: red" class="btn btn-danger" href="{{url("deletecategory", $category->id)}}">Delete</a>
                         </th>
+
                     </tr>
                 @endforeach
             </tbody>

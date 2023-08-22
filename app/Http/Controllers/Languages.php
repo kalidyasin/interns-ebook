@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\language;
 
+
 class Languages extends Controller
 {
             public function addlanguage(Request $request){
+
                 // Validate the form data
         $request->validate([
             'name' => 'required|max:255',
@@ -34,6 +36,7 @@ class Languages extends Controller
             {
                 return view("languages.lists");
 
+
             }
             public function update(Request $request, Language $language)
                 {
@@ -55,3 +58,4 @@ class Languages extends Controller
             }
 
     }
+

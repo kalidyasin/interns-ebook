@@ -9,6 +9,7 @@ use App\Http\Controllers\Languages;
 use App\Http\Controllers\Categories;
 use App\Http\Controllers\WelcomeController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,7 @@ Route::get('/users/{id}', 'App\Http\Controllers\HomeController@show')->name('use
 Route::post('/books/addBook', [App\Http\Controllers\Books::class, 'bookstore'])->name('bookstore');
 Route::put("/books/addBook", [App\Http\Controllers\HomeController::class, "bookPage"])->name("bookPage");
 Route::put("/books/lists", [App\Http\Controllers\Books::class, "listforbook"])->name("listforbook");
+
 Route::get("deletebook/{id}", "App\Http\Controllers\Books@delete" );
 Route::get("/books/addBook", [App\Http\Controllers\Books:: class, "inputsforaddbook"]);
 Route::get("/books/lists", [App\Http\Controllers\HomeController::class, 'tolistbook']);
@@ -52,6 +54,7 @@ Route::put('/author/display', [App\Http\Controllers\Authors::class, 'displayauth
 Route::get('/author/display', [App\Http\Controllers\HomeController::class, 'tolistauthor']);
 Route::get('/authors/{author}/edit',  [App\Http\Controllers\Authors::class, 'edit'])->name('authors.edit');
 Route::post('/authors/{author}/update', [App\Http\Controllers\Authors::class, 'update'])->name('authors.update');
+
 Route::get("deleteauthor/{id}", [App\Http\Controllers\Authors::class, 'destroyauthor']);
 
 
@@ -59,9 +62,11 @@ Route::get('/languages/language', [App\Http\Controllers\Languages::class, 'langu
 Route::post('/languages/language', [App\Http\Controllers\Languages::class, 'addlanguage'])->name('addlanguage');
 Route::put('/languages/lists', [App\Http\Controllers\Languages::class, 'listlanguage'])->name('listlanguage');
 Route::get('/languages/lists', [App\Http\Controllers\HomeController::class, 'tolistlanguage']);
+
 Route::get('/languages/{language}/edit',  [App\Http\Controllers\Languages::class, 'edit'])->name('languages.edit');
 Route::post('/languages/{language}/update', [App\Http\Controllers\Languages::class, 'update'])->name('languages.update');
 Route::get("deletelanguage/{id}", "App\Http\Controllers\Languages@delete" );
+
 
 
 
@@ -70,6 +75,7 @@ Route::get('/categorys/category', [App\Http\Controllers\Categories::class, 'cate
 Route::post('/categorys/category', [App\Http\Controllers\Categories::class, 'addcategory'])->name('addcategory');
 Route::post('/categorys/list', [App\Http\Controllers\Categories::class, 'listscategory'])->name('listscategory');
 Route::get('/categorys/list', [App\Http\Controllers\HomeController::class, 'tolistcategory']);
+
 Route::get('/categories/{category}/edit',  [App\Http\Controllers\Categories::class, 'edit'])->name('categories.edit');
 Route::post('/categories/{category}/update', [App\Http\Controllers\Categories::class, 'update'])->name('categories.update');
 Route::get("deletecategory/{id}", "App\Http\Controllers\Categories@delete" );
@@ -87,6 +93,8 @@ Route::get('/contact', [WelcomeController::class, 'contact']);
 
 Route::get('/user/sidebar', [App\Http\Controllers\Categories::class, 'sidebaruser'])->name('categories.sidebar');
 
-Route::get('category/{category}', 'App\Http\Controllers\HomeController@showBooks')->name('user.category.books');
+Route::get('/categories/{category}', 'App\Http\Controllers\HomeController@index')->name('categories.show');
 
-Route::get('user/{book}/book', 'App\Http\Controllers\HomeController@readBook')->name('books.read');
+Route::get('/categories', 'App\Http\Controllers\HomeController@showCategory')->name('categories.index');
+
+Route::get('/books/{id}', 'App\Http\Controllers\HomeController@read')->name('book.read');

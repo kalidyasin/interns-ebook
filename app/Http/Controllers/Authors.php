@@ -59,3 +59,4 @@ public function destroyauthor(Author $author, $id)
     return redirect()->route('displayauthor');
 } 
   }
+

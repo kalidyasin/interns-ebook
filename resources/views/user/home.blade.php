@@ -42,19 +42,16 @@
                                             <p class="card-text">Author: {{ $book->author->name }}</p>
                                             <p class="card-text">Price: {{ $book->price }}</p>
                                             <p class="card-text">Language: {{ $book->language->name }}</p>
-                                            <a href="{{ route('books.read', $book) }}" class="btn btn-primary">Read</a>
+                                            <a href="{{ route('book.read', ['id' => $book->id]) }}" class="btn btn-primary">Read</a>
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
                             </div>
                             @endsection
-                        </div>
-
-                                       
+                        </div>                   
                 </div>
-                   
-        
+
             @endsection
 
         </div>
