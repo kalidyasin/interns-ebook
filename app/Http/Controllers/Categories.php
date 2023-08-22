@@ -54,7 +54,7 @@ class Categories extends Controller
     }
 
 
-<<<<<<< HEAD
+
     public function sidebaruser()
         {
               $categories = Category::all();
@@ -64,6 +64,4 @@ class Categories extends Controller
     
    
 
-=======
->>>>>>> ae07942330d40f79d56852d539d4bc10adc8fc1c
 }

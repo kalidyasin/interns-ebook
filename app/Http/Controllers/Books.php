@@ -117,4 +117,5 @@ class Books extends Controller
                     $book = Book::find($id);
                     return view('user.book', ['book' => $book]);
                 }
+
 }
