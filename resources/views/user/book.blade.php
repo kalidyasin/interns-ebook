@@ -13,7 +13,7 @@
 
         @section('content')
             <h1>{{ $book->title }}</h1>
-            <p>{!! nl2br($book->content) !!}</p>
+            <iframe src="https://docs.google.com/gview?url={{ urlencode(asset($book->path)) }}&embedded=true" frameborder="0" width="100%" height="600px"></iframe>
         @endsection
     </div>
 </body>

@@ -23,10 +23,13 @@ class Book extends Model
     {
         return $this->belongsTo(Language::class);
     }
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class); 
-    }
-
+    public function categories() {
+        return $this->belongsToMany(Category::class);
+      }
     
+
+      public function users()
+        {
+            return $this->belongsToMany(User::class, 'book_history')->withTimestamps();
+        }
 }

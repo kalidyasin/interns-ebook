@@ -27,10 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('user.home');
-    }
+    
     public function admin(){
         return view("admin.admin");
     }
@@ -92,23 +89,27 @@ class HomeController extends Controller
 
         
         
-        public function showBooks(Category $category)
+        public function index(Category $category)
+        {
+            $books = $category->books;
+    
+            return view('user.home', ['category' => $category, 'books' => $books]);
+        }
+            
+        public function showCategory() 
             {
-                $books = $category->books;
-                $books = $category->books()->with('author')->get();
-                return view('user.home', compact('category', 'books'));
-
+                $categories = Category::all();
+                return view('user.sidebar', ['categories' => $categories]);
             }
-            public function readBook(Book $book)
+
+            public function history($id)
                 {
+                    $book = Book::findOrFail($id);
                     $user = auth()->user();
 
-                    Book_history::create([
-                        'user_id' => $user->id,
-                        'book_id' => $book->id,
-                    ]);
-                    return view('user.book', compact('book'));
-                }
-                
+                    $user->bookHistories()->attach($book);
 
+                    return view('user.home', ['book' => $book]);
+                }
+           
 }

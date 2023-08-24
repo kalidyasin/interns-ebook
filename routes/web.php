@@ -93,7 +93,11 @@ Route::get('/contact', [WelcomeController::class, 'contact']);
 
 Route::get('/user/sidebar', [App\Http\Controllers\Categories::class, 'sidebaruser'])->name('categories.sidebar');
 
-Route::get('category/{category}', 'App\Http\Controllers\HomeController@showBooks')->name('user.category.books');
+Route::get('/categories/{category}', 'App\Http\Controllers\HomeController@index')->name('categories.show');
 
+Route::get('/categories', 'App\Http\Controllers\HomeController@showCategory')->name('categories.index');
+
+
+Route::get('/books/{id}', 'App\Http\Controllers\HomeController@read')->name('book.read');
 Route::get('user/{book}/book', 'App\Http\Controllers\HomeController@readBook')->name('books.read');
 

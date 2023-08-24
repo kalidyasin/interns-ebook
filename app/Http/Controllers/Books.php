@@ -110,9 +110,12 @@ class Books extends Controller
                 {
                     $query = $request->get('query');
                     $books = Book::where('title', 'LIKE', "%$query%")->get();
-
-                    return view('search-results', compact('books'));
+                    return view('user.home', compact('books'));
                 }
-
+                public function show($id)
+                {
+                    $book = Book::find($id);
+                    return view('user.book', ['book' => $book]);
+                }
 
 }
