@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Book;
 use App\Models\Author;
 use App\Models\Book_history;
+use App\Models\History;
 use App\Models\language;
 use App\Models\Category;
 
@@ -30,6 +32,12 @@ class HomeController extends Controller
     
     public function admin(){
         return view("admin.admin");
+    }
+
+    public function home(){
+        $books = Book::all();
+        return view('welcome', compact('books' ));
+        
     }
     
 
@@ -102,14 +110,25 @@ class HomeController extends Controller
                 return view('user.sidebar', ['categories' => $categories]);
             }
 
-            public function history($id)
+            public function history(Request $request)
                 {
-                    $book = Book::findOrFail($id);
-                    $user = auth()->user();
+                    $userId = $request->input('userId');
+                    $bookId = $request->input('bookId');
 
-                    $user->bookHistories()->attach($book);
+        // Insert data into the table using the query builder
+                    DB::table('book_history')->insert([
+                        'user_id' => $userId,
+                        'book_id' => $bookId,
+                    ]);
 
-                    return view('user.home', ['book' => $book]);
+                }
+
+                public function displayhistory(Request $request)
+                {
+                    $history = history::all()->reverse();
+                  
+                    return view('history', compact('history' ));
+
                 }
            
 }

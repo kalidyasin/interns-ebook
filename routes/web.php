@@ -21,9 +21,7 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/a',  [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Auth::routes();
 
@@ -32,6 +30,8 @@ Route::middleware("admin")->group(function(){
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/book_history', [App\Http\Controllers\HomeController::class, 'history']);
+Route::get('/displayhistory', [App\Http\Controllers\HomeController::class, 'displayhistory']);
 
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin')->middleware("is_admin");
 
@@ -87,6 +87,9 @@ Route::get('/user/home', 'Books@search');
 Route::get('/user/home', [App\Http\Controllers\HomeController::class, "sidebar"]);
 
 Route::get('/', [WelcomeController::class, 'home']);
+
+
+
 Route::get('/about', [WelcomeController::class, 'about']);
 Route::get('/contact', [WelcomeController::class, 'contact']);
 

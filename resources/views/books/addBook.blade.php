@@ -38,6 +38,12 @@
                 <br>
 
                 <div class="form-group">
+                    <label for="path">image</label>
+                    <input type="file" name="image" id="path" class="form-control" required>
+                </div>
+                <br>
+
+                <div class="form-group">
                     <label for="path">Path</label>
                     <input type="file" name="path" id="path" class="form-control" required>
                 </div>

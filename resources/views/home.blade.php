@@ -51,7 +51,7 @@
             }
 
             a {
-                color: #007bff;
+                color: #000;
                 text-decoration: none;
             }
 
@@ -113,7 +113,7 @@
       }
       article {
         margin: 20px;
-        padding: 20px;
+        padding: 2px;
         background-color: #f9d5d5;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         border-radius: 5px;
@@ -124,10 +124,10 @@
         margin-top: 0;
       }
       article img {
-        width: 200px;
+        width: 300px;
         height: 200px;
         object-fit: cover;
-        border-radius: 50%;
+        border-radius: 10%;
         margin-bottom: 10px;
       }
       footer {
@@ -152,47 +152,47 @@
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
+        <li><a href="/displayhistory"> History</a></li>
     </ul>
     </nav>
+
+
+   
     <section>
-      <article>
-        <img src="rain-books-16110191.webp" alt="Book 1">
-        <h2>Book 1</h2>
-        <p>Author: John Smith</p>
-        <p>Price: $9.99</p>
-      </article>
-      <article>
-        <img src="depositphotos_73146775-stock-photo-a-stack-of-books-on.jpg" alt="Book 2">
+        
+    @foreach ($books as $book)
+    
+    <article class="book-article" data-book-id="{{ $book->id }}"   data-user-id="{{ optional(auth()->user())->id }}">
+    <a href="{{url('/pdf/'.$book->path.'.pdf')}}">
+        <img src="{{url('/images/'. $book->image .'.jpg')}}" alt="Book 2">
+  <h3>{{ $book->title }}</h3>
+  <p>Author: {{ $book->author->name }}</p>
+  <p>Price: {{ $book->price }}</p>
+    </a>
+</article>
+
+    @endforeach 
+      
+      
+      <!-- <article>
+        <a href="{{url('/pdf/p2.pdf')}}">
+        <img src="{{url('/images/background.jpg')}}" alt="Book 2">
         <h2>Book 2</h2>
         <p>Author: Jane Doe</p>
         <p>Price: $14.99</p>
+        </a>
+        
       </article>
       <article>
-        <img src="depositphotos_73146775-stock-photo-a-stack-of-books-on.jpg" alt="Book 3">
+        <a href="{{url('/pdf/p3.pdf')}}">
+        <img src="{{url('/images/background2.jpg')}}" alt="Book 3">
         <h2>Book 3</h2>
         <p>Author: Robert Johnson</p>
         <p>Price: $7.99</p>
-      </article>
-    </section>
-    <section>
-      <article>
-        <img src="rain-books-16110191.webp" alt="Book 1">
-        <h2>Book 4</h2>
-        <p>Author: John Smith</p>
-        <p>Price: $10.99</p>
-      </article>
-      <article>
-        <img src="depositphotos_73146775-stock-photo-a-stack-of-books-on.jpg" alt="Book 2">
-        <h2>Book 5</h2>
-        <p>Author: Jane Doe</p>
-        <p>Price: $24.99</p>
-      </article>
-      <article>
-        <img src="depositphotos_73146775-stock-photo-a-stack-of-books-on.jpg" alt="Book 3">
-        <h2>Book 6</h2>
-        <p>Author: Robert Johnson</p>
-        <p>Price: $17.99</p>
-      </article>
+        </a>
+        
+      </article> -->
+   
     </section>
     <footer>
       <p style="color: white">&copy; 2023 My E-Book</p>
@@ -226,4 +226,65 @@
            
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    // Get all elements with the class "book-article"
+  const articleElements = document.querySelectorAll('.book-article');
+
+// Add an event listener to each article element
+articleElements.forEach(function(articleElement) {
+  articleElement.addEventListener('click', function(event) {
+    // Prevent the default link behavior
+    
+
+    // Get the book ID from the data attribute
+    const bookId = articleElement.dataset.bookId;
+    const userId = articleElement.dataset.userId;
+
+    
+
+
+    
+    // Perform your desired action with the book ID
+    // For example, you can make an AJAX request or redirect to a new page
+    $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+    $.ajax({
+    url: '/book_history',
+    type: 'POST',
+    data:  {
+    userId: userId,
+    bookId:bookId,
+
+  },
+    headers: {
+    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+  },
+
+
+    success: function(response) {
+      // Handle the success response
+      console.log('Data sent successfully');
+      console.log(response);
+    },
+    error: function(xhr, status, error) {
+      // Handle the error response
+      console.error('Error sending data');
+      console.log(xhr.responseText);
+    }
+  });
+
+
+
+
+
+
+
+  });
+});
+</script>
 </html>

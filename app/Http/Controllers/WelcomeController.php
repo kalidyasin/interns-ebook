@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class WelcomeController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $books = Book::all();
+        return view('home', compact('books' ));
     }
 
     public function about()

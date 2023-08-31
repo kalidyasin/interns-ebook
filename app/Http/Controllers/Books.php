@@ -21,6 +21,7 @@ class Books extends Controller
                 'title' => 'required',
                 'year' => 'required',
                 'price' => 'required',
+                'image' => 'required',///////image
                 'path' => 'required',
                 'user_id' => 'required',
                 'author_id' => 'required',
@@ -32,6 +33,7 @@ class Books extends Controller
             $book->title = $validatedData['title'];
             $book->year = $validatedData['year'];
             $book->price = $validatedData['price'];
+            $book->image = $validatedData['image'];       ///////image
             $book->path = $validatedData['path'];
             $book->user_id = $validatedData['user_id'];
             $book->author_id = $validatedData['author_id'];
@@ -61,6 +63,7 @@ class Books extends Controller
         'title' => 'required|string',
         'year' => 'required|integer',
         'price' => 'required|numeric',
+        'image' => 'required|string',           /////image
         'path' => 'required|string',
         'author_id' => 'nullable|exists:authors,id',
         'user_id' => 'required|exists:users,id', 
@@ -73,6 +76,7 @@ class Books extends Controller
         'title',
         'year',
         'price',
+        'image', 
         'path', 
         'author_id',
         'user_id',
