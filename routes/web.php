@@ -61,7 +61,7 @@ Route::get("deleteauthor/{id}", [App\Http\Controllers\Authors::class, 'destroyau
 Route::get('/languages/language', [App\Http\Controllers\Languages::class, 'language'])->name('language');
 Route::post('/languages/language', [App\Http\Controllers\Languages::class, 'addlanguage'])->name('addlanguage');
 Route::put('/languages/lists', [App\Http\Controllers\Languages::class, 'listlanguage'])->name('listlanguage');
-Route::get('/languages/lists', [App\Http\Controllers\HomeController::class, 'tolistlanguage']);
+Route::get('/languages/listgits', [App\Http\Controllers\HomeController::class, 'tolistlanguage']);
 
 Route::get('/languages/{language}/edit',  [App\Http\Controllers\Languages::class, 'edit'])->name('languages.edit');
 Route::post('/languages/{language}/update', [App\Http\Controllers\Languages::class, 'update'])->name('languages.update');
