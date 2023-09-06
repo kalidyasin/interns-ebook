@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Book;
 use App\Models\Author;
+use App\Models\Book_history;
 use App\Models\language;
 use App\Models\Category;
 
@@ -26,10 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('user.home');
-    }
+    
     public function admin(){
         return view("admin.admin");
     }
@@ -74,17 +72,44 @@ class HomeController extends Controller
         $users = User::all();
         $authors = Author::all();
         $languages = Language::all();
+        $categories = Category::all();
 
         return view('books.addBook', compact('users', 'authors', 'languages', ));
 
     }
     public function toUpdate()
         {
+            $categories = Category::all();
+
             $usersupdates = User::all();
             $authorupdates = Author::all();
             $languageupdate = Language::all();
             return view('books.edit', ["users"=>$usersupdates, "authorupdates"=>$authorupdates, "languageupdate"=>$languageupdate]);
         }
 
+        
+        
+        public function index(Category $category)
+        {
+            $books = $category->books;
+    
+            return view('user.home', ['category' => $category, 'books' => $books]);
+        }
+            
+        public function showCategory() 
+            {
+                $categories = Category::all();
+                return view('user.sidebar', ['categories' => $categories]);
+            }
 
+            public function history($id)
+                {
+                    $book = Book::findOrFail($id);
+                    $user = auth()->user();
+
+                    $user->bookHistories()->attach($book);
+
+                    return view('user.home', ['book' => $book]);
+                }
+           
 }

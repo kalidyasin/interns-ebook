@@ -11,7 +11,6 @@
 
     @section('content')
     <div class="container">
-    <!-- edit.blade.php -->
 <form action="{{ route('languages.update', $language->id) }}" method="POST">
     @csrf
 
